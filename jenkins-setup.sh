@@ -4,15 +4,15 @@
 sudo apt-get update -y
 
 # Install Java (Jenkins requires Java 17 or 21)
-sudo apt-get install fontconfig openjdk-17-jre -y
+sudo apt install fontconfig openjdk-21-jre -y 
 
 # Import the Jenkins GPG key
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 
 # Add the Jenkins repository to the system
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-  https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 
 # Update local package index and install Jenkins
